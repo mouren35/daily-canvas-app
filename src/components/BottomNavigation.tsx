@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Home, List, Calendar, Person } from '@mui/icons-material';
+import { Home, List, CalendarToday, Person } from '@mui/icons-material';
 
 interface BottomNavigationProps {
   activeTab: number;
@@ -11,7 +11,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ activeTab, onTabCha
   const tabs = [
     { icon: Home, label: '动态' },
     { icon: List, label: '清单' },
-    { icon: Calendar, label: '日历' },
+    { icon: CalendarToday, label: '日历' },
     { icon: Person, label: '我的' },
   ];
 

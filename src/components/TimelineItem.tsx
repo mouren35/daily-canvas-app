@@ -7,6 +7,7 @@ interface TimelineItemProps {
   description?: string;
   status: 'completed' | 'in-progress' | 'upcoming' | 'warning';
   icon?: React.ReactNode;
+  isLast?: boolean;
 }
 
 const TimelineItem: React.FC<TimelineItemProps> = ({ 
@@ -14,7 +15,8 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   title, 
   description, 
   status,
-  icon 
+  icon,
+  isLast = false
 }) => {
   const getStatusColor = () => {
     switch (status) {
@@ -49,24 +51,36 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   };
 
   return (
-    <div className="flex items-start px-4 py-4 active:bg-gray-50 transition-colors border-b border-gray-50 last:border-b-0">
-      <div className="text-sm text-gray-500 w-12 flex-shrink-0 pt-0.5 font-medium">
-        {time}
-      </div>
-      <div className="flex-shrink-0 mx-3 mt-0.5">
-        <div className={`w-6 h-6 rounded-full ${getStatusColor()} flex items-center justify-center text-white text-xs font-bold shadow-sm`}>
-          {getStatusIcon()}
+    <div className="relative flex">
+      {/* Time column */}
+      <div className="w-12 flex-shrink-0 text-right pr-4">
+        <div className="text-sm text-gray-500 font-medium pt-1">
+          {time}
         </div>
       </div>
-      <div className="flex-1 min-w-0">
-        <div className="text-gray-900 font-medium text-base leading-relaxed mb-1">
-          {title}
+      
+      {/* Timeline line and dot */}
+      <div className="relative flex flex-col items-center">
+        <div className={`w-3 h-3 rounded-full ${getStatusColor()} flex items-center justify-center text-white text-xs font-bold z-10 flex-shrink-0 mt-1`}>
+          <span className="text-[8px]">{getStatusIcon()}</span>
         </div>
-        {description && (
-          <div className="text-gray-600 text-sm leading-relaxed line-clamp-3">
-            {description}
-          </div>
+        {!isLast && (
+          <div className="w-px h-full bg-gray-200 absolute top-3 left-1/2 transform -translate-x-1/2"></div>
         )}
+      </div>
+      
+      {/* Content */}
+      <div className="flex-1 ml-4 pb-6">
+        <div className="bg-white rounded-lg p-3 shadow-sm border border-gray-100">
+          <div className="text-gray-900 font-medium text-sm mb-1">
+            {title}
+          </div>
+          {description && (
+            <div className="text-gray-600 text-xs leading-relaxed">
+              {description}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

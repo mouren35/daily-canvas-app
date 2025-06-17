@@ -59,8 +59,8 @@ const Index = () => {
         <StatsCard schedule={181} steps={11382} completed={6} />
       </div>
       
-      {/* 时间线 */}
-      <div className="bg-white mx-3 rounded-2xl shadow-sm overflow-hidden mb-4">
+      {/* 时间轴 */}
+      <div className="bg-white mx-3 rounded-2xl shadow-sm overflow-hidden mb-4 p-4">
         {timelineData.map((item, index) => (
           <TimelineItem
             key={index}
@@ -68,6 +68,7 @@ const Index = () => {
             title={item.title}
             description={item.description}
             status={item.status}
+            isLast={index === timelineData.length - 1}
           />
         ))}
       </div>

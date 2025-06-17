@@ -50,15 +50,17 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-gray-50 pb-20 max-w-md mx-auto relative">
       {/* 日期导航 */}
       <DateNavigation currentDate={currentDate} onDateChange={setCurrentDate} />
       
       {/* 统计卡片 */}
-      <StatsCard schedule={181} steps={11382} completed={6} />
+      <div className="pt-4">
+        <StatsCard schedule={181} steps={11382} completed={6} />
+      </div>
       
       {/* 时间线 */}
-      <div className="bg-white mx-4 rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-white mx-3 rounded-2xl shadow-sm overflow-hidden mb-4">
         {timelineData.map((item, index) => (
           <TimelineItem
             key={index}

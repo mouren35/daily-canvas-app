@@ -36,38 +36,40 @@ const DateNavigation: React.FC<DateNavigationProps> = ({ currentDate, onDateChan
 
   return (
     <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
-      <div className="flex items-center justify-between px-4 py-3">
+      {/* 顶部导航栏 */}
+      <div className="flex items-center justify-between px-4 py-2 safe-area-top">
         <button
           onClick={goToPreviousDay}
-          className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-white/20 transition-colors"
+          className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/20 transition-colors active:bg-white/30"
         >
-          <ChevronLeft fontSize="small" />
+          <ChevronLeft fontSize="medium" />
         </button>
         
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2">
           <button
             onClick={goToToday}
-            className="text-sm px-3 py-1 rounded-full hover:bg-white/20 transition-colors"
+            className="text-sm px-3 py-1.5 rounded-full hover:bg-white/20 transition-colors active:bg-white/30 font-medium"
           >
             每日
           </button>
-          <button className="text-sm px-3 py-1 rounded-full hover:bg-white/20 transition-colors">
+          <button className="text-sm px-3 py-1.5 rounded-full hover:bg-white/20 transition-colors active:bg-white/30">
             +日
           </button>
-          <button className="text-sm px-3 py-1 rounded-full hover:bg-white/20 transition-colors">
+          <button className="text-sm px-3 py-1.5 rounded-full hover:bg-white/20 transition-colors active:bg-white/30">
             日日
           </button>
         </div>
         
         <button
           onClick={goToNextDay}
-          className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-white/20 transition-colors"
+          className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/20 transition-colors active:bg-white/30"
         >
-          <ChevronRight fontSize="small" />
+          <ChevronRight fontSize="medium" />
         </button>
       </div>
       
-      <div className="text-center pb-4 px-4">
+      {/* 日期显示 */}
+      <div className="text-center pb-3 px-4">
         <div className="text-lg font-medium">
           {formatDate(currentDate)}
         </div>

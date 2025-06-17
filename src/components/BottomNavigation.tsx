@@ -16,8 +16,8 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ activeTab, onTabCha
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-2 py-1">
-      <div className="flex justify-around">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 safe-area-bottom">
+      <div className="flex justify-around px-2 py-1">
         {tabs.map((tab, index) => {
           const IconComponent = tab.icon;
           const isActive = activeTab === index;
@@ -26,15 +26,15 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({ activeTab, onTabCha
             <button
               key={index}
               onClick={() => onTabChange(index)}
-              className={`flex flex-col items-center py-2 px-3 min-w-0 flex-1 ${
+              className={`flex flex-col items-center justify-center py-2 px-3 min-w-0 flex-1 transition-all duration-200 active:scale-95 ${
                 isActive ? 'text-blue-600' : 'text-gray-500'
               }`}
             >
               <IconComponent 
                 fontSize="small" 
-                className={`mb-1 ${isActive ? 'text-blue-600' : 'text-gray-500'}`}
+                className={`mb-1 transition-colors ${isActive ? 'text-blue-600' : 'text-gray-500'}`}
               />
-              <span className={`text-xs ${isActive ? 'text-blue-600' : 'text-gray-500'}`}>
+              <span className={`text-xs font-medium transition-colors ${isActive ? 'text-blue-600' : 'text-gray-500'}`}>
                 {tab.label}
               </span>
             </button>
